@@ -37,6 +37,7 @@ import { MybusdetailsComponent } from './mybusdetails/mybusdetails.component';
 import { AddEditbusComponent } from './add-editbus/add-editbus.component';
 
 import { RoutesService } from './_services/routes.service';
+import { BusDetailsService } from './_services/bus-details.service';
 
 
 
@@ -79,7 +80,8 @@ import { RoutesService } from './_services/routes.service';
     ReactiveFormsModule,FormsModule, NgbModule
   ],
   providers: [
-    RoutesService
+    RoutesService,
+    BusDetailsService
   ],
   bootstrap: [AppComponent]
 })
