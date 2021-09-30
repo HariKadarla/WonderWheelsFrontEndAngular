@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 // Added.....
-import { RoutesService } from '../routes.service';
+import { RoutesService } from '../_services/routes.service';
 
 @Component({
   selector: 'app-add-editroute',
