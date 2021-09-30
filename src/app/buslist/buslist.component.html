@@ -1,0 +1,106 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<nav>
+    <ul class="topnav">
+
+        <li>
+            <h2> Hello Admin! </h2>
+        </li>
+
+        <li class="topnav-right"> <a href="#adminlogout">Logout</a> </li>
+
+    </ul>
+</nav>
+<nav>
+    <ul class="topnav">
+        <li><b> <a href="#buslist" [routerLink]="['/buslist']"> Bus List </a> </b></li>
+        <li><b> <a href="#routeslist" [routerLink]="['/routeslist']"> Routes List </a> </b></li>
+        <li><b> <a href="#recordsandprofits" [routerLink]="['/recordsandprofits']"> Records & Profits </a> </b></li>
+    </ul>
+</nav>
+
+<!-- Modal for popup -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered model-x1" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseClick()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <app-add-editbus [bus]="bus" *ngIf="ActivateAddEditBusComponent">
+                </app-add-editbus>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Bus List</span>
+</nav>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">BusID</th>
+            <th scope="col">RouteID</th>
+            <!--<th scope="col">Source</th>
+            <th scope="col">Destination</th>-->
+            <th scope="col">TotalSeats</th>
+            <th scope="col">FilledSeats</th>
+            <th scope="col">Status</th>
+            <th scope="col">DepartureDate</th>
+            <th scope="col">DepartureTime</th>
+            <th scope="col">ArrivalDate</th>
+            <th scope="col">ArrivalTime</th>
+            <th scope="col">DriverID</th>
+            <!--<th scope="col">DriverName</th>-->
+            <th scope="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"
+                    (click)="AddClick()" data-backdrop="static" data-keyboard="false">
+                    Add Bus
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of BusList">
+            <td> {{b.BusId}}</td>
+            <td>{{b.RouteId}}</td>
+            <!--<td>{{b.Source}}</td><td>{{b.Destination}}</td>-->
+            <td>{{b.TotalSeats}}</td>
+            <td>{{b.FilledSeats}}</td>
+            <td>{{b.Status}}</td>
+            <td>{{b.DepartureDate}}</td>
+            <td>{{b.DepartureTime}}</td>
+            <td>{{b.ArrivalDate}}</td>
+            <td>{{b.ArrivalTime}}</td>
+            <td>{{b.DriverId}}</td>
+            <!-- <td>{{b.name}}</td>-->
+            <td>
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal"
+                    (click)="UpdateClick(b)" data-backdrop="static" data-keyboard="false">
+                    Edit
+                </button>
+            </td>
+            <td>
+                <button type="button" (click)="DeleteClick(b.busId)" class="btn btn-primary">
+                    Delete
+                </button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
