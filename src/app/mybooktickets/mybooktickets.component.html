@@ -1,0 +1,76 @@
+<nav>
+    <ul class="topnav">
+        
+        <li><b> <a href="#Profile"  [routerLink]  = "['/profile']"> Profile </a> </b></li>
+        <li><b> <a href="#BookTicket" [routerLink]  = "['/mybooktickets']" > Book Ticket </a> </b></li>
+        <li><b> <a href="#Booking"[routerLink]  = "['/mybookings']"> My Bookings </a> </b></li>
+        <li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>
+        <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
+        <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>  
+    </ul>
+</nav>
+
+
+  <body>
+    <div class="container">
+      <div class="title">Pick Your Ride</div>
+      <div class="content">
+        <form action="#">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">From</span>
+              <select name="From">
+                  <option value="d">-Departure-</option>
+                  <option value="h">Hyderabad</option>
+                  <option value="c">Chennai</option>
+                  <option value="m">Mumbai</option>
+                  <option value="b">Banglore</option>
+             </select>          
+          </div>
+            <div class="input-box">
+              <span class="details">To</span>
+              <select name="From">
+                  <option value="a">-Arrival-</option>
+                  <option value="h">Hyderabad</option>
+                  <option value="c">Chennai</option>
+                  <option value="m">Mumbai</option>
+                  <option value="b">Banglore</option>
+             </select>          
+          </div>
+      </div>
+          <div class="journey-type">
+              <input type="radio" name="journeytype" id="dot-1">
+              <input type="radio" name="journeytype" id="dot-2">
+              <span class="journeytype-title">Journey Type</span>
+              <div class="category">
+                <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Single Trip</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Round Trip</span>
+              </label>
+              </div>
+          </div>
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Journey Date</span>
+              <input type="date" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Return Date</span>
+              <input type="date" placeholder="Enter your number" required>
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Search Buses" [routerLink]="['/mybusdetails']" >
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </body>
+  
+  
+  
