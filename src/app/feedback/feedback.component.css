@@ -1,0 +1,35 @@
+.modal-dialog {
+    height: 50%;
+    width: 50%;
+    margin: auto
+}
+
+.modal-header {
+    color:white;
+    background-color: indigo;
+}
+
+textarea {
+    border: none;
+    box-shadow: none ;
+    -webkit-appearance: none;
+    outline: 0px;
+}
+
+.openmodal {
+    margin-left: 35%;
+    width: 25%;
+    margin-top: 25%
+}
+
+.icon1 {
+    color: indigo;
+}
+
+a {
+    margin: auto
+}
+
+input {
+    color: indigo;
+}

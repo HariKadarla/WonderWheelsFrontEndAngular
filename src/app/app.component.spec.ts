@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'WonderWheelsAngularFrontEnd'`, () => {
+  it(`should have as title 'WonderWheels'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('WonderWheelsAngularFrontEnd');
+    expect(app.title).toEqual('WonderWheels');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('WonderWheelsAngularFrontEnd app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('WonderWheels app is running!');
   });
 });

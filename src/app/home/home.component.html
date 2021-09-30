@@ -1,0 +1,21 @@
+<!--navbar-->
+
+<nav>
+    <ul [class]="navstate">
+            <li> <a href="wonderwheels"><img style="padding: 0px;" src="./assets/Images/LOGO.jpg" width="75px" height="75px" alt="WonderWheels">
+                </a> 
+            </li>
+            <li><b> <a class="desktop hov" [routerLink]="['/wonderwheels']" href="wonderwheels"> Wonder Wheels </a> </b></li>
+            <li><b> <a class="desktop hov" [routerLink]="['/aboutus']" href="aboutus"> About Us </a> </b></li>
+
+            <li><b> <a class="desktop hov" [routerLink]="['/contactus']" href="contactus"> Contact Us </a></b> </li>
+            <li><b> <a class="desktop hov" href="#adminlogin" [routerLink]="['/adminlogin']">Admin Login</a></b> </li>
+            <li class="topnav-right"><b> <a class="desktop hov" href="#userlogin" [routerLink]="['/login']">User
+                            Login/SignUp</a></b> </li>
+            <li class="topnav-right"> <b> <a class="desktop hov" href="#booktickets" [routerLink]="['/booktickets']">
+                            Book Your Journey </a></b> </li>
+
+            <li class="dropdownIcon"> <b> <a class="desktop hov" id="tog" href="typescript:void(0)"
+                            (click)="dropdownMenu()">&#9776;</a> </b> </li>
+    </ul>
+</nav>
