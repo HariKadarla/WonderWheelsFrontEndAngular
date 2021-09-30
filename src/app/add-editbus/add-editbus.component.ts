@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BusDetailsService } from '../bus-details.service';
+import { BusDetailsService } from '../_services/bus-details.service';
 
 @Component({
   selector: 'app-add-editbus',

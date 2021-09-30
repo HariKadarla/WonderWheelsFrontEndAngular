@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //added.............................
-import { BusDetailsService } from '../bus-details.service';
+import { BusDetailsService } from '../_services/bus-details.service';
 
 @Component({
   selector: 'app-buslist',
