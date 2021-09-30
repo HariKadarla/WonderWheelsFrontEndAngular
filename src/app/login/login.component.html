@@ -29,15 +29,15 @@
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <input type="text" name="LoginId" placeholder="Enter your email" [(ngModel)]="AuthUserObject.LoginId" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" name="Password" placeholder="Enter your password" [(ngModel)]="AuthUserObject.Password" required>
               </div>
               <div class="text"><a [routerLink]="['/forgotpassword']" href="#">Forgot password?</a></div>
               <div class="button input-box">
-                <input type="submit" value="Submit" [routerLink]="['/mydashboard']" >
+                <input type="submit" value="Submit" (click)="CheckUser()" >
               </div>
               <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
             </div>
@@ -49,22 +49,22 @@
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" name="FirstName" placeholder="Enter your name" [(ngModel)]="LoginObject.FirstName" required>
+                <input type="text" name="FirstName" placeholder="Enter your name"  required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" name="Email" placeholder="Enter your email" [(ngModel)]="LoginObject.Email" required>
+                <input type="text" name="Email" placeholder="Enter your email"  required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="Password" placeholder="Enter your password" [(ngModel)]="LoginObject.Password" required>
+                <input type="password" name="Password" placeholder="Enter your password"  required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password"  placeholder="Confirm password" required>
               </div>
               <div class="button input-box">
-                <input type="submit" value="Register" (Click)="SignUpSubmit()" >
+                <input type="submit" value="Register"  >
               </div>
               <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
             </div>

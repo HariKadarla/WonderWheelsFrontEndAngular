@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../login';
+//Added.....
+import { AuthUserDetails } from '../_classes/auth-user-details';
+import { UserauthService } from '../_services/userauth.service';
+import { Router } from '@angular/router';  
+
 
 @Component({
   selector: 'app-login',
@@ -9,18 +13,31 @@ import { Login } from '../login';
 
 export class LoginComponent implements OnInit {
 
-  LoginObject! : Login;
-
-  constructor() { }
+  AuthUserObject! : AuthUserDetails;
+  UserObject! : AuthUserDetails;
+  constructor(private service : UserauthService,  private router: Router) { }
+  FirstName : string = '';
 
   ngOnInit(): void {
-    this.LoginObject= new Login ();
+    this.AuthUserObject = new AuthUserDetails();
   }
 
-  SignUpSubmit() {
-
-    console.log(this.LoginObject);
+  CheckUser() {
+    console.log(this.AuthUserObject);
+    this.service.ServiceMethodGetUserDetails(this.AuthUserObject)
+    .subscribe (res =>
+    { //const loggedUserEmail = (res).LoginId;
+      localStorage.setItem ('FirstName', (res).FirstName);
+      this.UserObject = res;
+      console.log (this.UserObject);
+      this.FirstName = this.UserObject.FirstName;
+      if (this.FirstName!=''){
+        console.log("Login successful");
+        localStorage.setItem('isLoggedIn', "true");
+        this.router.navigate(['/mydashboard']);
+      }
+     } );
     
   }
-
+  
 }
