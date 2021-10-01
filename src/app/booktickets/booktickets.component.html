@@ -7,28 +7,28 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">From</span>
-            <select name="From">
-                <option value="d">-Departure-</option>
-                <option value="h">Hyderabad</option>
-                <option value="c">Chennai</option>
+            <select name="Source" [(ngModel)]="RouteObject.Source" placeholder = "Source" >
+              <option value="a">-Departure-</option>
+                <option value="Hyderabad">Hyderabad</option>
+               <!-- <option value="c">Chennai</option>
                 <option value="m">Mumbai</option>
-                <option value="b">Banglore</option>
+                <option value="b">Banglore</option>-->
            </select>          
         </div>
           <div class="input-box">
             <span class="details">To</span>
-            <select name="From">
+            <select name="Destination" [(ngModel)]="RouteObject.Destination" placeholder = "Destination" >
                 <option value="a">-Arrival-</option>
-                <option value="h">Hyderabad</option>
-                <option value="c">Chennai</option>
-                <option value="m">Mumbai</option>
-                <option value="b">Banglore</option>
+               <!-- <option value="h">Hyderabad</option>-->
+                <option value="Chennai">Chennai</option>
+               <!-- <option value="m">Mumbai</option>-->
+                <option value="Bengaluru">Bengaluru</option>
            </select>          
         </div>
     </div>
         <div class="journey-type">
-            <input type="radio" name="journeytype" id="dot-1">
-            <input type="radio" name="journeytype" id="dot-2">
+            <input type="radio" name="tickettype" value="SingleTrip" [(ngModel)]="tickettype" id="dot-1">
+            <input type="radio" name="tickettype" value="RoundTrip" [(ngModel)]="tickettype" id="dot-2">
             <span class="journeytype-title">Journey Type</span>
             <div class="category">
               <label for="dot-1">
@@ -44,15 +44,16 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Journey Date</span>
-            <input type="date" placeholder="Enter your email" required>
+            <input type="date" name="DepartureDate" placeholder="Enter your email" [(ngModel)]="DepartureDate" required>
           </div>
           <div class="input-box">
             <span class="details">Return Date</span>
-            <input type="date" placeholder="Enter your number" required>
+            <input type="date" placeholder="Enter your number" >
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Search Buses" [routerLink]="['/busdetails']" >
+          <input type="submit" value="Search Buses" (click)="GetBuses()"  >
+          <p>{{ReturnRoute.InvestmentPerTrip}}</p>
         </div>
       </form>
     </div>
