@@ -3,7 +3,7 @@ export class Buses {
     RouteId!: number;
     TotalSeats!: number;
     FilledSeats!: number;
-    Status!: string;
+    Status!: string; 
     DepartureTime!: string;
     DepartureDate!: string;
     ArrivalTime!: string;
