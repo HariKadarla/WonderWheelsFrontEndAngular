@@ -1,13 +1,13 @@
 <nav>
-  <ul class="topnav">
-
-    <li><b> <a href="#Profile" [routerLink]="['/profile']"> Profile </a> </b></li>
-    <li><b> <a href="#BookTicket" [routerLink]="['/mybooktickets']"> Book Ticket </a> </b></li>
-    <li><b> <a href="#Booking" [routerLink]="['/mybookings']"> My Bookings </a> </b></li>
-    <li><b> <a href="#ChangePassword" [routerLink]="['/changepassword']"> Change Password </a> </b></li>
-    <li><b> <a href="#BookCoach" [routerLink]="['/bookcoach']"> Book Coach </a> </b></li>
-    <li><b> <a href="#Wallet" [routerLink]="['/wallet']"> Wallet </a> </b></li>
-  </ul>
+    <ul class="topnav">
+        
+        <li><b> <a href="#Profile"  [routerLink]  = "['/profile']"> Profile </a> </b></li>
+        <li><b> <a href="#BookTicket" [routerLink]  = "['/mybooktickets']" > Book Ticket </a> </b></li>
+        <li><b> <a href="#Booking"[routerLink]  = "['/mybookings']"> My Bookings </a> </b></li>
+      <!--<li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>-->
+      <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
+        <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>  
+    </ul>
 </nav>
 
 
@@ -19,39 +19,37 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">From</span>
-            <select name="Source" [(ngModel)]="RouteObject.Source" placeholder="Source">
-              <option value="d">-Departure-</option>
+            <select name="Source" [(ngModel)]="RouteObject.Source"  >
               <option value="Hyderabad">Hyderabad</option>
-              <option value="Chennai">Chennai</option>
+             <option value="Chennai">Chennai</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Bengaluru">Bengaluru</option>
-            </select>
-          </div>
+         </select>          
+        </div>
           <div class="input-box">
             <span class="details">To</span>
-            <select name="Destination" [(ngModel)]="RouteObject.Destination" placeholder="Destination">
-              <option value="a">-Arrival-</option>
+            <select name="Destination" [(ngModel)]="RouteObject.Destination"  >
               <option value="Hyderabad">Hyderabad</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Bengaluru">Bengaluru</option>
-            </select>
-          </div>
+               <option value="Chennai">Chennai</option>
+               <option value="Mumbai">Mumbai</option>
+               <option value="Bengaluru">Bengaluru</option>
+          </select>         
         </div>
+    </div>
         <div class="journey-type">
-          <input type="radio" name="tickettype" value="SingleTrip" [(ngModel)]="tickettype" id="dot-1">
-          <input type="radio" name="tickettype" value="RoundTrip" [(ngModel)]="tickettype" id="dot-2">
-          <span class="journeytype-title">Journey Type</span>
-          <div class="category">
-            <label for="dot-1">
+            <input type="radio" name="tickettype" value="SingleTrip" [(ngModel)]="tickettype" id="dot-1">
+            <!--<input type="radio" name="tickettype" value="RoundTrip" [(ngModel)]="tickettype" id="dot-2">-->
+            <span class="journeytype-title">Journey Type</span>
+            <div class="category">
+              <label for="dot-1">
               <span class="dot one"></span>
               <span class="gender">Single Trip</span>
             </label>
-            <label for="dot-2">
+            <!--<label for="dot-2">
               <span class="dot two"></span>
               <span class="gender">Round Trip</span>
-            </label>
-          </div>
+            </label>-->
+            </div>
         </div>
         <div class="user-details">
           <div class="input-box">
@@ -59,16 +57,20 @@
             <input type="date" name="DepartureDate" placeholder="Enter your email" [(ngModel)]="DepartureDate" required>
           </div>
           <div class="input-box">
-            <span class="details">Return Date</span>
-            <input type="date" placeholder="Enter your number" required>
+            <span class="details">Return Date (Optional)</span>
+            <input type="date" placeholder="Enter your number" >
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Search Buses" (click)="GetMyBuses()">
-          <p>{{ReturnRoute.InvestmentPerTrip}}</p>
+          <input type="submit" value="Search Buses" (click)="GetBuses()"  >
         </div>
       </form>
     </div>
   </div>
 
 </body>
+
+
+
+  
+  

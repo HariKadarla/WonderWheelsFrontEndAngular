@@ -52,7 +52,7 @@ ol {
 .seat {
     display: flex;
     flex: 0 0 14.28571428571429%;
-    padding: 10px;
+    padding: 6.5px;
     position: relative;
 }
 
@@ -63,8 +63,9 @@ ol {
     margin-left: 14.28571428571429%;
 }
 .seat input[type=checkbox] {
-    position: absolute;
+    position: relative;
     opacity: 0;
+    width: 43px;
 }
 .seat input[type=checkbox]:checked + label {
     background-color: lightgreen;
@@ -74,9 +75,9 @@ ol {
     animation-fill-mode: both;
 }
 .seat input[type=checkbox]:disabled + label {
-    background:#dddddd;
-    text-indent: -9999px;
+    background:red;
     overflow: hidden;
+    width: 100%;
 }
 
 .seat input[type=checkbox]:disabled + label:hover {
@@ -91,7 +92,7 @@ ol {
     font-size: 14px;
     font-weight: bold;
     line-height: 1.5rem;
-    padding: 4px 0;
+    padding:  0;
     background: #8a8585;
     border-radius: 5px;
     animation-duration: 300ms;
@@ -114,6 +115,12 @@ ol {
     box-shadow: 0 0 0px 2px #5C6AFF;
     background-color:#da93f7;
 }
+
+ol.fuselage li.row ol.seats li.seat input[type=checkbox].blocked :disabled {
+    background: rgb(255, 1, 1);
+}
+
+
 @-webkit-keyframes rubberBand {
     0% {
         -webkit-transform: scale3d(1, 1, 1);
@@ -204,10 +211,14 @@ div.button button.button {
    
     
   }
-  
-  div.button button.button:hover {background-color: #5c0572;}
 
-  div.button button.button:active {
+  div.button button.button a {
+      text-decoration: none;
+  }
+  
+  div.button button.button a:hover {background-color: #5c0572;}
+
+  div.button button.button a:active {
     background-color: indigo;
     box-shadow: 0 5px #666;
     transform: translateY(4px);

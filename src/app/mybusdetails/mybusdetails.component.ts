@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 //Added...
 import { Buses } from '../_classes/buses';
 import { BusesfetchService } from '../_services/busesfetch.service';
@@ -11,18 +13,19 @@ import { Router } from '@angular/router';
 })
 export class MybusdetailsComponent implements OnInit {
 
-  constructor(private router: Router, private busservice: BusesfetchService) { }
+  constructor(private router : Router, private busservice : BusesfetchService) { }
 
-  BusObject!: Buses;
-  RouteId: number = 0;
+  BusObject! : Buses;
+  RouteId : number = 0;
   id!: string;
   DepartureDate!: string;
   tickettype!: string;
 
-  Buses: any = [];
+  ActivateSeatselectionComponent : boolean = false;
+  Buses : any = [];  
   TicketPrice: number = 0;
 
-
+   
 
   ngOnInit(): void {
     this.BusObject = new Buses();
@@ -34,19 +37,24 @@ export class MybusdetailsComponent implements OnInit {
     this.tickettype = (localStorage.getItem('tickettype') || '');
     this.BusObject.RouteId = this.RouteId;
     this.BusObject.DepartureDate = this.DepartureDate;
-    this.GetMyBusesDetails();
+    this.GetBusesDetails();
   }
 
-  GetMyBusesDetails() {
+  GetBusesDetails(){
 
-    this.busservice.ServiceMethodGetBusesDetails(this.BusObject).subscribe(data => { this.Buses = data; });
+    this.busservice.ServiceMethodGetBusesDetails(this.BusObject).subscribe( data => { this.Buses=data; } );
 
   }
+  
+  BookClick(b:Buses) {
+    localStorage.setItem('Bus',JSON.stringify(b));
+    this.ActivateSeatselectionComponent = true;
 
-  BookClick() {
-    this.router.navigate(['/seatselection']);
   }
-
+  
+  CloseClick() {
+    //this.router.navigate(['/busdetails']);
+    this.ActivateSeatselectionComponent = false;
+  }
 
 }
-

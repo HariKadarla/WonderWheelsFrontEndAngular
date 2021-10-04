@@ -1,76 +1,75 @@
 <nav>
   <ul class="topnav">
-      
-      <li><b> <a href="#Profile"  [routerLink]  = "['/profile']"> Profile </a> </b></li>
-      <li><b> <a href="#BookTicket" [routerLink]  = "['/mybooktickets']" > Book Ticket </a> </b></li>
-      <li><b> <a href="#Booking"[routerLink]  = "['/mybookings']"> My Bookings </a> </b></li>
-      <li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>
-      <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
-      <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>  
+
+    <li><b> <a href="#Profile" [routerLink]="['/profile']"> Profile </a> </b></li>
+    <li><b> <a href="#BookTicket" [routerLink]="['/mybooktickets']"> Book Ticket </a> </b></li>
+    <li><b> <a href="#Booking" [routerLink]="['/mybookings']"> My Bookings </a> </b></li>
+      <!--<li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>-->
+      <li><b> <a href="#BookCoach" [routerLink]="['/bookcoach']"> Book Coach </a> </b></li>
+    <!--<li><b> <a href="#MyCoachBookings" [routerLink] = "['/mycoachbookings']" >MyCoachBookings</a></b></li>-->
+    <li><b> <a href="#Wallet" [routerLink]="['/wallet']"> Wallet </a> </b></li>
   </ul>
 </nav>
 
 <body>
-    <div class="container">
-      <div class="title">Hire Bus</div>
-      <div class="content">
-        <form action="#">
-          <div class="user-details">
-            <div class="input-box">
-              <span class="details">From</span>
-              <select name="From">
-                  <option value="d">-Departure-</option>
-                  <option value="h">Hyderabad</option>
-                  <option value="c">Chennai</option>
-                  <option value="m">Mumbai</option>
-                  <option value="b">Banglore</option>
-             </select>          
+  <div class="container">
+    <div class="title">Hire Bus</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">From</span>
+            <select name="Source" [(ngModel)]="RouteObject.Source" placeholder="Source">
+              <option value="d">-Departure-</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bengaluru">Bengaluru</option>
+            </select>
           </div>
-            <div class="input-box">
-              <span class="details">To</span>
-              <select name="From">
-                  <option value="a">-Arrival-</option>
-                  <option value="h">Hyderabad</option>
-                  <option value="c">Chennai</option>
-                  <option value="m">Mumbai</option>
-                  <option value="b">Banglore</option>
-             </select>          
+          <div class="input-box">
+            <span class="details">To</span>
+            <select name="Destination" [(ngModel)]="RouteObject.Destination" placeholder="Destination">
+              <option value="a">-Arrival-</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bengaluru">Bengaluru</option>
+            </select>
           </div>
-      </div>
-      <div class="with-driver">
-        <input type="radio" name="withdriver" id="dot-1">
-        <input type="radio" name="withdriver" id="dot-2">
-        <span class="withdriver-title">With Driver</span>
-        <div class="category">
-          <label for="dot-1">
-          <span class="dot one"></span>
-          <span class="gender">Yes</span>
-        </label>
-        <label for="dot-2">
-          <span class="dot two"></span>
-          <span class="gender">No</span>
-        </label>
         </div>
-      </div>
-          <div class="user-details">
-            <div class="input-box">
-              <span class="details">Journey Date</span>
-              <input type="date" placeholder="Enter your email" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Return Date</span>
-              <input type="date" placeholder="Enter your number" required>
-            </div>
+        <div class="with-driver" >
+          <input type="radio" name="withdriver" value="Yes" [(ngModel)]="withdriver" id="dot-1">
+          <input type="radio" name="withdriver" value="No" [(ngModel)]="withdriver" id="dot-2">
+          <span class="withdriver-title">With Driver</span>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Yes</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">No</span>
+            </label>
           </div>
-          <div class="button">
-            <input type="submit" value="Search Buses" href="#coachdetails"
-            [routerLink]="['/coachdetails']">
+        </div>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Journey Date</span>
+            <input type="date" name="DepartureDate" placeholder="Enter your DepartureDate" [(ngModel)]="DepartureDate"
+              required>
           </div>
-        </form>
-      </div>
+          <div class="input-box">
+            <span class="details">Return Date</span>
+            <input type="date" name="ReturnDate" placeholder="Enter your ReturnDate" [(ngModel)]="ReturnDate"
+            required>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Search Buses" (click)=" GetMyCoachBuses() ">
+        </div>
+      </form>
     </div>
-  
-  </body>
-  
-  
-  
+  </div>
+
+</body>

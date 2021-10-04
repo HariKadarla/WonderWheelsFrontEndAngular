@@ -10,15 +10,16 @@
 
 <nav>
     <ul class="topnav">
-        
-        <li><b> <a href="#Profile"  [routerLink]  = "['/profile']"> Profile </a> </b></li>
-        <li><b> <a href="#BookTicket" [routerLink]  = "['/mybooktickets']" > Book Ticket </a> </b></li>
-        <li><b> <a href="#Booking"[routerLink]  = "['/mybookings']"> My Bookings </a> </b></li>
-        <li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>
-        <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
-        <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>
+
+        <li><b> <a href="#Profile" [routerLink]="['/profile']"> Profile </a> </b></li>
+        <li><b> <a href="#BookTicket" [routerLink]="['/mybooktickets']"> Book Ticket </a> </b></li>
+        <li><b> <a href="#Booking" [routerLink]="['/mybookings']"> My Bookings </a> </b></li>
+        <li><b> <a href="#ChangePassword" [routerLink]="['/changepassword']"> Change Password </a> </b></li>
+        <li><b> <a href="#BookCoach" [routerLink]="['/bookcoach']"> Book Coach </a> </b></li>
+        <li><b> <a href="#MyCoachBookings" [routerLink] = "['/mycoachbookings']" >MyCoachBookings</a></b></li>
+        <li><b> <a href="#Wallet" [routerLink]="['/wallet']"> Wallet </a> </b></li>
     </ul>
-  </nav>
+</nav>
 
 <nav>
     <ul class="topnav">
@@ -39,17 +40,29 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Travels</th>
-            <th scope="col">DepartureTime</th>
-            <th scope="col">ArrivalTime</th>
-            <th scope="col">Seats</th>
+            <th scope="col">Coach Bus Name</th>
+            <th scope="col">Route ID</th>
+            <th scope="col">Departure Date</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Arrival Date</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Total Seats</th>
             <th scope="col">Fare</th>
-
-
             <th scope="col">ActionBook</th>
         </tr>
     </thead>
     <tbody>
-
+        <tr *ngFor="let cb of Coach">
+            <td> Bus {{cb.CoachBusId}}</td>
+            <td>{{cb.RouteId}}</td>
+            <td>{{cb.DepartureDate}}</td>
+            <td>{{cb.DepartureTime}}</td>
+            <td>{{cb.ArrivalDate}}</td>
+            <td>{{cb.ArrivalTime}}</td>
+            <td>{{cb.TotalSeats}}</td>
+            <td>{{InvestmentPerTrip}}</td>
+            <button type="button" class="btn btn-link" (click)=" CoachBookClick(cb)">
+                Book Coach
+            </button>
     </tbody>
 </table>
