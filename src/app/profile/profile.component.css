@@ -105,7 +105,7 @@ html, body{
 }
 .container{
   background: #fff;
-  max-width: 350px;
+  max-width: 500px;
   width: 100%;
   padding: 25px 30px;
   border-radius: 5px;
@@ -191,3 +191,5 @@ html, body{
 .AfterSubmit {
   text-align: center;
 }
+
+

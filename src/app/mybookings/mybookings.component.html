@@ -14,8 +14,8 @@
         <li><b> <a href="#Profile"  [routerLink]  = "['/profile']"> Profile </a> </b></li>
         <li><b> <a href="#BookTicket" [routerLink]  = "['/mybooktickets']" > Book Ticket </a> </b></li>
         <li><b> <a href="#Booking"[routerLink]  = "['/mybookings']"> My Bookings </a> </b></li>
-        <li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>
-        <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
+      <!--<li><b> <a href="#ChangePassword" [routerLink]  = "['/changepassword']" > Change Password </a> </b></li>-->
+      <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
         <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>
   
         
@@ -38,30 +38,59 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Ticket ID</th>
-            <th scope="col">Customer ID</th>
-            <th scope="col">Bus ID</th>
-            <th scope="col">Source</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Departure Time</th>
+            <th scope="col">TicketID</th>
+            <th scope="col">BusID</th>
+            <th scope="col">RouteID</th>
+            <th scope="col">Source&#8658;Destination</th>
             <th scope="col">Departure Date</th>
-            <th scope="col">Arrival Time</th>
+            <th scope="col">Departure Time</th>
             <th scope="col">Arrival Date</th>
-            <th scope="col">Return Departure Time</th>
-            <th scope="col">Return Departure Date</th>
-            <th scope="col">Return Arrival Time</th>
-            <th scope="col">Return Arrival Date</th>
+            <th scope="col">Arrival Time</th>
             <th scope="col">Type of Ticket</th>
-            <th scope="col">Number of seats</th>
-            <th scope="col">Seat ID</th>
-            <th scope="col">Driver ID</th>
-            <th scope="col">Trip Status</th>
+            <th scope="col">Seats</th>
+            <th scope="col">SeatIDs</th>
+            <th scope="col">Total Cost</th>
+            <th scope="col">Status</th>
+            <th scope="col" >Action</th>
+            
 
             
         </tr>
     </thead>
     <tbody>
+        <tr *ngFor="let b of AuthCustBookings">
+            <td>{{b.TicketId}}</td>
+            <td> Bus{{b.BusId}}</td>
+            <td>{{b.RouteId}}</td>
+            <div *ngFor = "let r of RouteList">
+                <td *ngIf = "b.RouteId == r.RouteId" >{{r.Source}}</td>
+                <td *ngIf = "b.RouteId == r.RouteId" >{{r.Destination}}</td>
+            </div>
+           <!-- <td >{{r.Source}}</td>
+            <td >{{r.Destination}}</td> -->
+            <td>{{b.DepartureDate}}</td>
+            <td>{{b.DepartureTime}}</td>
+            <td>{{b.ArrivalDate}}</td>
+            <td>{{b.ArrivalTime}}</td>
+            <td >{{b.TicketType}}</td>
+            <td >{{b.NoOfSeats}}</td>
+            <td >{{b.SeatIds}}</td>
+            <td >{{b.TotalPrice}}</td>
+            
+            <td >{{b.TripStatus}}</td>
+            <td>
+                <button type="button"  class="btn btn-link" 
+                (click)="CancelClick(b)"  >
+                  Cancel Tickets
+                </button>
+                
+                <!--
+                <button type="button"  class="btn btn-link" (click)="BookClick()">
+                  Book                   
 
+                </button>-->
+              </td>
+        </tr>
     </tbody>
 </table>
 

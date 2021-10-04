@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotpasswordComponent implements OnInit {
 
-  AckMessage : string = 'BeforeSubmit';
+  AckMessage : string = "BeforeSubmit";
+  Email: string= "";
 
   constructor() { }
 
@@ -16,7 +17,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   DisplayAck()
   {
-    this.AckMessage = 'AfterSubmit';
+    this.AckMessage = "AfterSubmit";
 
   }
 }

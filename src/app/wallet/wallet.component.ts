@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class WalletComponent implements OnInit {
 
   constructor() { }
+  Wallet : number = 0;
 
   ngOnInit(): void {
+    this.Wallet = JSON.parse(localStorage.getItem('AuthCustomer') || '').Wallet;
   }
 
 }
