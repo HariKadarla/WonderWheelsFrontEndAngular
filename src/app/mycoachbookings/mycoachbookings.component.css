@@ -3,13 +3,14 @@ header,
 footer {
     display: block;
 }
+
 nav {
     margin : 0;
     width: 100%;
 }
 
 nav ul {
-    background-color: #eee;
+    background-color:#eee;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -24,17 +25,16 @@ ul.topnav li.topnav-right {
     float: right;
 }
 
-ul.topnav li a.desktop {
+ul.topnav li a {
     display: block;
     text-decoration: none;
-    min-height: 16px;
+    min-height: 12px;
     text-align: center;
-    padding: 30px;
+    padding: 14px;
     text-transform: uppercase;
     color: black;
 }
-
-ul.topnav li a.hov:hover {
+ul.topnav li a:hover {
     background-color: indigo;
     color: #fff;
 }
@@ -43,9 +43,14 @@ ul.topnav li.dropdownIcon {
     display: none;
 }
 
-ul.topnav li.disappear {
-    display: none;
-} 
+
+tbody tr td {
+    text-align: center;
+}
+
+thead tr th {
+    text-align: center;
+}
 
 @media screen and (max-width: 680px) {
 
@@ -61,7 +66,6 @@ ul.topnav li.disappear {
         position: absolute;
         top: 0;
         right: 0;
-        
     }
     ul.topnav-responsive li a.desktop {
         display: block;
@@ -88,8 +92,4 @@ ul.topnav li.disappear {
         display: block;
         text-align: left;
     }
-    
-    
 }
-
-   

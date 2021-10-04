@@ -1,0 +1,61 @@
+
+<body>
+  <div class="container">
+    <div class="title">Pick Your Ride</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">From</span>
+            <select name="Source" [(ngModel)]="RouteObject.Source"  >
+                <option value="Hyderabad">Hyderabad</option>
+               <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+           </select>          
+        </div>
+          <div class="input-box">
+            <span class="details">To</span>
+            <select name="Destination" [(ngModel)]="RouteObject.Destination"  >
+               <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+           </select>          
+        </div>
+    </div>
+    <div class="journey-type">
+      <input type="radio" name="tickettype" value="SingleTrip" [(ngModel)]="tickettype" id="dot-1">
+      <!--<input type="radio" name="tickettype" value="RoundTrip" [(ngModel)]="tickettype" id="dot-2">-->
+      <span class="journeytype-title">Journey Type</span>
+      <div class="category">
+        <label for="dot-1">
+        <span class="dot one"></span>
+        <span class="gender">Single Trip</span>
+      </label>
+      <!--<label for="dot-2">
+        <span class="dot two"></span>
+        <span class="gender">Round Trip</span>
+      </label>-->
+      </div>
+        </div>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Journey Date</span>
+            <input type="date" name="DepartureDate" placeholder="Enter your email" [(ngModel)]="DepartureDate" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Return Date (Optional)</span>
+            <input type="date" placeholder="Enter your number" >
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Search Buses" (click)="GetBuses()"  >
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+

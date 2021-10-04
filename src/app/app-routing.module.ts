@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BookticketsComponent } from './booktickets/booktickets.component';
@@ -27,6 +29,8 @@ import { SeatselectionComponent } from './seatselection/seatselection.component'
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { MybookticketsComponent } from './mybooktickets/mybooktickets.component';
 import { MybusdetailsComponent } from './mybusdetails/mybusdetails.component';
+import { UnauthorisedcustomerdetailsComponent } from './unauthorisedcustomerdetails/unauthorisedcustomerdetails.component';
+import { MycoachbookingsComponent } from './mycoachbookings/mycoachbookings.component';
 
 
 const routes: Routes = [
@@ -34,6 +38,18 @@ const routes: Routes = [
   {
     path: "",
     component: WonderwheelsComponent
+  },
+  {
+    path: "root",
+    component: AppComponent
+  },
+  {
+    path: "mycoachbookings",
+    component: MycoachbookingsComponent
+  },
+  {
+    path: "unauthorisedcustomerdetails",
+    component: UnauthorisedcustomerdetailsComponent
   },
   {
     path: "add-editroute",

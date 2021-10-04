@@ -38,6 +38,8 @@ import { AddEditbusComponent } from './add-editbus/add-editbus.component';
 
 import { RoutesService } from './_services/routes.service';
 import { BusDetailsService } from './_services/bus-details.service';
+import { UnauthorisedcustomerdetailsComponent } from './unauthorisedcustomerdetails/unauthorisedcustomerdetails.component';
+import { MycoachbookingsComponent } from './mycoachbookings/mycoachbookings.component';
 
 
 
@@ -71,7 +73,9 @@ import { BusDetailsService } from './_services/bus-details.service';
     ChangepasswordComponent,
     MybookticketsComponent,
     MybusdetailsComponent,
-    AddEditbusComponent
+    AddEditbusComponent,
+    UnauthorisedcustomerdetailsComponent,
+    MycoachbookingsComponent
     ],
   imports: [
     BrowserModule,

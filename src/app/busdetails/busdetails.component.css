@@ -1,0 +1,9 @@
+@media screen and (min-width: 500px) { .modal-dialog { max-width: 500px; /* New width for default modal */ } }
+
+tbody tr td {
+    text-align: center;
+}
+
+thead tr th {
+    text-align: center;
+}

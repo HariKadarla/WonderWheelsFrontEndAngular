@@ -1,0 +1,76 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Bus List</span>
+</nav>
+
+<!-- Modal for popup -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Your Details</h5>
+          <button type="button" class="close" 
+          data-dismiss="modal" aria-label="Close"
+          (click)="CloseClick()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <app-unauthorisedcustomerdetails *ngIf="ActivateUnauthorisedcustomerdetailsComponent">
+          </app-unauthorisedcustomerdetails>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Bus Name</th>
+            <th scope="col">Departure Date</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Arrival Date</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Seats Available</th>
+            <th scope="col">Ticket price</th>
+
+
+            <th scope="col">ActionBook</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of Buses">
+            <td> Bus {{b.BusId}}</td>
+            <td>{{b.DepartureDate}}</td>
+            <td>{{b.DepartureTime}}</td>
+            <td>{{b.ArrivalDate}}</td>
+            <td>{{b.ArrivalTime}}</td>
+            <td>{{b.TotalSeats - b.FilledSeats}}</td>
+            <td>{{TicketPrice}}</td>
+            <td>
+                <button type="button"  class="btn btn-link" 
+                (click)="BookClick(b)" >
+                  Book Tickets
+                </button>
+                <!--
+                <button type="button"  class="btn btn-link" (click)="BookClick()">
+                  Book                   data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false"
+
+                </button>-->
+              </td>
+        </tr>
+    </tbody>
+</table>

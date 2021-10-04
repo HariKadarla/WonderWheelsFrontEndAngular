@@ -9,6 +9,15 @@ import { AuthcustomerbookingdetailsService } from '../_services/authcustomerbook
 import { AuthCustomerbookingdetails } from '../_classes/auth-customerbookingdetails';
 import { UnauthcustomerdetailsService } from '../_services/unauthcustomerdetails.service';
 
+//Added..
+import { Coach } from '../_classes/coach';
+import { CoachfetchService } from '../_services/coachfetch.service';
+import { Coachreservationbusdetails } from '../_classes/coachreservationbusdetails';
+import { CoachreservationbusdetailsService } from '../_services/coachreservationbusdetails.service';
+import { Coachreservationdetails } from '../_classes/coachreservationdetails';
+import { CoachreservationdetailsService } from '../_services/coachreservationdetails.service';
+
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -28,12 +37,20 @@ export class PaymentComponent implements OnInit {
   FirstName : string='';
   EmailId : string='';
 
+  //Added..
+  coachreservationObject! : Coachreservationdetails;
+  coachbus! : Coach;
+
 
   constructor(private service: BusDetailsService,
     private router: Router,
     private unauthservice: Unauthcustomerbookingdetails,
     private authservice: AuthcustomerbookingdetailsService,
-    private unauthcustormerservice: UnauthcustomerdetailsService) { }
+    private unauthcustormerservice: UnauthcustomerdetailsService,
+    //Added..
+    private  cfservice: CoachfetchService,
+    private coachservice: CoachreservationdetailsService
+    ) { }
 
   bus! : Buses;
 
@@ -59,12 +76,39 @@ export class PaymentComponent implements OnInit {
     this.TotalFare = this.TotalBookedSeats * this.TicketPrice;
     this.EmailId = localStorage.getItem('EmailId') || '';
     this.FirstName = localStorage.getItem('FirstName') || '';
+    //Added....
+    this.coachbus = JSON.parse(localStorage.getItem('CoachBus') || '');
+    this.coachreservationObject = new Coachreservationdetails();
   }
 
   confirmpayment() {
     this.service.updatebus(this.bus.BusId,this.bus).subscribe();
     this.loginstatus = localStorage.getItem('isLoggedIn') || '';
     if (this.loginstatus == 'true') {
+      if ('true' == (localStorage.getItem('isBookCoach'))) {
+        localStorage.setItem('isBookCoach','false');
+        //Added.......
+      //this.service.updatecoachbus(this.coachbus.CoachBusId,this.coachbus).subscribe();
+      this.coachreservationObject.CustomerId = parseInt(localStorage.getItem('CustomerId') || '');
+      this.coachreservationObject.WithDriver = (localStorage.getItem('WithDriver') || '');
+      this.coachreservationObject.CoachBusId = this.coachbus.CoachBusId;
+      this.coachreservationObject.Source = (localStorage.getItem('Source') || '');
+      this.coachreservationObject.Destination = (localStorage.getItem('Destination') || '');
+      this.coachreservationObject.DepartureDate = this.coachbus.DepartureDate;
+      this.coachreservationObject.DepartureTime = this.coachbus.DepartureTime;
+      this.coachreservationObject.ArrivalDate = this.coachbus.ArrivalDate;
+      this.coachreservationObject.ArrivalTime = this.coachbus.ArrivalTime;
+      this.coachreservationObject.OutDate = this.coachbus.DepartureDate;
+      this.coachreservationObject.InDate = (localStorage.getItem('ReturnDate') || '');
+      this.coachreservationObject.Price = 10000; 
+      this.coachreservationObject.SecurityDeposit = "Yes";
+      this.coachreservationObject.DepositAmount = 50000;
+      this.coachservice.addNewreservation(this.coachreservationObject).subscribe(res=>{
+        alert("Coach Reserved Successfully!!");
+      });
+      this.router.navigate(['/mycoachbookings'])
+      }
+      else {
       this.authcustBookingObject.CustomerId = parseInt(localStorage.getItem('CustomerId') || '');
       this.authcustBookingObject.BusId = this.bus.BusId;
       this.authcustBookingObject.RouteId = parseInt(localStorage.getItem('RouteId') || '');
@@ -84,7 +128,9 @@ export class PaymentComponent implements OnInit {
         console.log(this.authcustBookingObject);
       });
       this.router.navigate(['/mybookings']);
-    }
+    }  
+  }
+
     else {
       this.unauthcustObject = JSON.parse(localStorage.getItem('Customer') || '');
       this.unauthcustBookingObject.Email = this.unauthcustObject.Email;

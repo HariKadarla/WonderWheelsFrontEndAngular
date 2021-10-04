@@ -1,0 +1,110 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="./assets/Images/frontImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="./assets/Images/backImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+          <form action="#" #loginform="ngForm" >
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" id="LoginId" #LoginId="ngModel" minlength="5"  name="LoginId" placeholder="Enter your email" [(ngModel)]="AuthUserObject.LoginId" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="LoginId.errors && (LoginId.dirty || LoginId.touched)">
+              <p *ngIf="LoginId.errors.required" style="color: indigo;" >Email is required</p>
+              <p *ngIf="LoginId.errors.minlength" style="color: indigo;">Email must be atleast 5 characters long</p> 
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="Password" #Password="ngModel" name="Password" minlength="6" placeholder="Enter your password" [(ngModel)]="AuthUserObject.Password" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="Password.errors && (Password.dirty || Password.touched)">
+              <p *ngIf="Password.errors.required" style="color: indigo;" >Password is required</p>
+              <p *ngIf="Password.errors.minlength" style="color: indigo;">Password must be atleast 6 characters long</p> 
+              </div>
+              <br>
+              <div class="text"><a [routerLink]="['/forgotpassword']" href="#">Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Submit" [disabled]="loginform.invalid" (click)="CheckUser()" >
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+            </div>
+        </form>
+      </div>
+        <div class="signup-form">
+          <div class="title">Signup</div>
+        <form #SignUpForm = "ngForm">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="FirstName" #FirstName="ngModel" minlength="5" name="FirstName" placeholder="Enter your Name" [(ngModel)]="SignupUserObject.FirstName" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched)">
+              <p *ngIf="FirstName.errors.required" style="color: indigo;" >FirstName is required</p>
+
+              <p *ngIf="FirstName.errors.minlength" style="color: indigo;">First Name must be atleast 3 characters long</p> 
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="LoginId" id="LoginId1" #LoginId1="ngModel" minlength="5" placeholder="Enter your Email" [(ngModel)]="SignupUserObject.LoginId" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="LoginId1.errors && (LoginId1.dirty || LoginId1.touched)">
+              <p *ngIf="LoginId1.errors.required" style="color: indigo;" >Email is required</p>
+              <p *ngIf="LoginId1.errors.minlength" style="color: indigo;">Email must be atleast 5 characters long</p> 
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="Password" id="Password1" #Password1="ngModel" minlength="6" placeholder="Enter your password" [(ngModel)]="SignupUserObject.Password" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="Password1.errors && (Password1.dirty || Password1.touched)">
+              <p *ngIf="Password1.errors.required" style="color: indigo;" >Password is required</p>
+              <p *ngIf="Password1.errors.minlength" style="color: indigo;">Password must be atleast 6 characters long</p> 
+              </div>
+              <div class="input-box">
+                <i class="fas fa-phone"></i>
+                <input type="text" name="ContactNo" id="ContactNo" #ContactNo="ngModel" minlength="10" placeholder="Enter Your Contact Number" [(ngModel)]="SignupUserObject.ContactNo" required>
+              </div>
+              <div class="form-control-feedback"
+              *ngIf="ContactNo.errors && (ContactNo.dirty || ContactNo.touched)">
+              <p *ngIf="ContactNo.errors.required" style="color: indigo;" >ContactNo is required</p>
+              
+              <p *ngIf="ContactNo.errors.minlength" style="color: indigo;">ContactNo must be 10 characters long</p> 
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit" [disabled]="SignUpForm.invalid" (click)= "UserSignUp()" >
+
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</body>

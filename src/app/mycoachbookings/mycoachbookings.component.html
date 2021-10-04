@@ -1,3 +1,4 @@
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
+ 
 <nav>
     <ul class="topnav">
         
@@ -18,9 +19,6 @@
       <li><b> <a href="#BookCoach" [routerLink]  = "['/bookcoach']" > Book Coach </a> </b></li>
       <li><b> <a href="#MyCoachBookings" [routerLink] = "['/mycoachbookings']" >MyCoachBookings</a></b></li>
         <li><b> <a href="#Wallet"  [routerLink]  = "['/wallet']"> Wallet </a> </b></li>
-  
-        
-        
     </ul>
   </nav>
 
@@ -28,7 +26,7 @@
     <ul class="topnav">
 
         <li>
-            <h2> Welcome to your previous booking  </h2>
+            <h2> Welcome to your previous coach booking  </h2>
         </li>
 
         
@@ -39,52 +37,56 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">TicketID</th>
-            <th scope="col">BusID</th>
-            <th scope="col">RouteID</th>
-            <th scope="col">Source&#8658;Destination</th>
+            <th scope="col">Reservation ID</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">With Driver</th>
+            <th scope="col">Coach BusID</th>
+            <th scope="col">Source</th>
+            <th scope="col">Destination</th>
             <th scope="col">Departure Date</th>
             <th scope="col">Departure Time</th>
             <th scope="col">Arrival Date</th>
             <th scope="col">Arrival Time</th>
-            <th scope="col">Type of Ticket</th>
-            <th scope="col">Seats</th>
-            <th scope="col">SeatIDs</th>
-            <th scope="col">Total Cost</th>
-            <th scope="col">Status</th>
-            <th scope="col" >Action</th>
+            <th scope="col">OutDate</th>
+            <th scope="col">InDate</th>
+            <th scope="col">Price</th>
+            <th scope="col">SecurityDeposit</th>
+            <th scope="col">Deposit Amount</th>
             
-
             
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let b of AuthCustBookings">
-            <td>{{b.TicketId}}</td>
-            <td> Bus{{b.BusId}}</td>
-            <td>{{b.RouteId}}</td>
+        <tr *ngFor="let cb of CoachBookings">
+            <td>{{cb.ReservationId}}</td>
+            <td>{{cb.CustomerId}}</td>
+            <td>{{cb.WithDriver}}</td>
+            <td> CoachBus {{cb.CoachBusId}}</td>
+            <!--<td>{{cb.RouteId}}</td>
             <div *ngFor = "let r of RouteList">
-                <td *ngIf = "b.RouteId == r.RouteId" >{{r.Source}}</td>
-                <td *ngIf = "b.RouteId == r.RouteId" >{{r.Destination}}</td>
-            </div>
-           <!-- <td >{{r.Source}}</td>
-            <td >{{r.Destination}}</td> -->
-            <td>{{b.DepartureDate}}</td>
-            <td>{{b.DepartureTime}}</td>
-            <td>{{b.ArrivalDate}}</td>
-            <td>{{b.ArrivalTime}}</td>
-            <td >{{b.TicketType}}</td>
-            <td >{{b.NoOfSeats}}</td>
-            <td >{{b.SeatIds}}</td>
-            <td >{{b.TotalPrice}}</td>
-            
-            <td >{{b.TripStatus}}</td>
+                <td *ngIf = "cb.RouteId == r.RouteId" >{{r.Source}}</td>
+                <td *ngIf = "cb.RouteId == r.RouteId" >{{r.Destination}}</td>
+            </div>-->
+            <td >{{cb.Source}}</td>
+            <td >{{cb.Destination}}</td>
+            <td>{{cb.DepartureDate}}</td>
+            <td>{{cb.DepartureTime}}</td>
+            <td>{{cb.ArrivalDate}}</td>
+            <td>{{cb.ArrivalTime}}</td>
+            <td>{{cb.OutDate}}</td>
+            <td>{{cb.InDate}}</td>
+            <td>{{cb.Price}}</td>
+            <td >{{cb.SecurityDeposit}}</td>
+            <td >{{cb.DepositAmount}}</td>
             <td>
                 <button type="button"  class="btn btn-link" 
-                (click)="CancelClick(b)"  >
+                (click)="CancelClick(cb)"  >
                   Cancel Tickets
                 </button>
-                
+                <button type="button"  class="btn btn-link" 
+                (click)="PrintClick(cb)"  >
+                  Print Tickets
+                </button>
                 <!--
                 <button type="button"  class="btn btn-link" (click)="BookClick()">
                   Book                   
@@ -94,4 +96,3 @@
         </tr>
     </tbody>
 </table>
-

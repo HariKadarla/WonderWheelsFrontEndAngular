@@ -6,7 +6,7 @@ import {Observable} from 'rxjs'
 import { AuthCustomerbookingdetails } from '../_classes/auth-customerbookingdetails';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class AuthcustomerbookingfetchService {
 

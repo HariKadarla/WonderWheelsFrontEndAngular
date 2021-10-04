@@ -14,18 +14,14 @@
                             Login/SignUp</a></b> </li>
             <li [class]="loginstate"> <b> <a class="desktop hov" href="#booktickets" [routerLink]="['/booktickets']">
                             Book Your Journey </a></b> </li>
-          <!--  <li [class]="loginstate"> <b> <a class="desktop hov" href="#booktickets" [routerLink]="['/booktickets']">
-                            Cancel Tickets </a></b> </li>-->
             
             
             <li [class]="loggedin"> <b> <a class="desktop hov" href="#booktickets" (click)= "logout()" [routerLink]="['/booktickets']">
                                 Logout  </a></b> </li>
-            <li [class]="loggedin"><b> <a class="desktop hov" href="#userlogin" [routerLink]="['/mybooktickets']">{{User}}
+            <li [class]="loggedin"><b> <a class="desktop hov" href="#userlogin" [routerLink]="['/login']">{{User}}
                                     </a></b> </li>
 
             <li class="dropdownIcon"> <b> <a class="desktop hov" id="tog" href="typescript:void(0)"
                             (click)="dropdownMenu()">&#9776;</a> </b> </li>
     </ul>
 </nav>
-
-<router-outlet></router-outlet>

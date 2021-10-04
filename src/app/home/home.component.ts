@@ -1,25 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthUserDetails } from './_classes/auth-user-details';
+import { AuthUserDetails } from '../_classes/auth-user-details';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent {
-  title = 'WonderWheels';
-  ngOnInit(): void {
-    //localStorage.clear();
-    //localStorage.setItem('isLoggedIn','false');
-    //localStorage.setItem('FirstName', 'User');
-    localStorage.setItem('RefreshCount',JSON.stringify('1'));
-    this.AuthCustObject = new AuthUserDetails();
-    this.loginstatus();
-  }
+export class HomeComponent implements OnInit {
+
   constructor(private router : Router) { }
 
   AuthCustObject! : AuthUserDetails;
+
+  ngOnInit(): void {
+    this.AuthCustObject = new AuthUserDetails();
+    this.loginstatus();
+  }
 
   User : string = 'Hello ';
 
@@ -41,7 +38,7 @@ export class AppComponent {
   }
 
   loginstatus() {
-    if (localStorage.getItem('isLoggedIn') == 'true' && (localStorage.getItem('FirstName') || '') != 'User'  ) {
+    if (localStorage.getItem('isLoggedIn') == 'true') {
       this.loginstate = 'disappear';
       this.loggedin = 'topnav-right';
       this.User = 'Hello ' + (localStorage.getItem('FirstName') || '');
@@ -61,5 +58,8 @@ export class AppComponent {
     this.loggedin = 'disappear';
     this.router.navigate(['/login']);
   }
+
+
+
 
 }

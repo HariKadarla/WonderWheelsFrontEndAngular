@@ -23,7 +23,7 @@ export class BookcoachComponent implements OnInit {
   ngOnInit(): void {
     this.RouteObject = new Routes();
     this.ReturnRoute = new Routes();
-
+    localStorage.setItem('isBookCoach','true');
   }
 
   GetMyCoachBuses() {
