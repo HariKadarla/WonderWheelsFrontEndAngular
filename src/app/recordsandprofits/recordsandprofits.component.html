@@ -1,4 +1,3 @@
-
 <nav>
     <ul class="topnav">
 
@@ -29,7 +28,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Travels</th>
+
             <th scope="col">TravelID</th>
 
             <th scope="col">RouteID</th>
@@ -37,9 +36,16 @@
             <th scope="col">TravelTime</th>
             <th scope="col">TotalBookedSeats</th>
             <th scope="col">Profit</th>
-            <th scope="col">Update</th>
+
     </thead>
     <tbody>
-
+        <tr *ngFor="let rp of RecordsProfitsList">
+            <td> {{rp.TravelId}}</td>
+            <td>{{rp.RouteId}}</td>
+            <td>{{rp.TravelDate}}</td>
+            <td>{{rp.TravelTime}}</td>
+            <td>{{rp.TotalBookedSeats}}</td>
+            <td>{{rp.ProfitPerTrip}}</td>
+        </tr>
     </tbody>
 </table>

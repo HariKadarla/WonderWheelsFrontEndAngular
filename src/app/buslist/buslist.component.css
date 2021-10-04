@@ -39,6 +39,14 @@ ul.topnav li a:hover {
     color: #fff;
 }
 
+tbody tr td {
+    text-align: center;
+}
+
+thead tr th {
+    text-align: center;
+}
+
 ul.topnav li.dropdownIcon {
     display: none;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RecordsProfitsService } from '../_services/recordsprofits.service';
+
 @Component({
   selector: 'app-recordsandprofits',
   templateUrl: './recordsandprofits.component.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordsandprofitsComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private service: RecordsProfitsService) { }
+
+  RecordsProfitsList: any = [];
+
+  GetRecordsProfits() {
+
+    this.service.ServiceMethodGetAllRecordsProfits().subscribe(data => { this.RecordsProfitsList = data; });
+
+  }
 
   ngOnInit(): void {
+    this.GetRecordsProfits();
   }
 
 }

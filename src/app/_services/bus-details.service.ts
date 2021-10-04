@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 
+import { Buses } from '../_classes/buses';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class BusDetailsService {
     return this.httpclient.get<any>(this.baseUrl);
   }
   deletebus(busId: number) {
-    return this.httpclient.delete<any>(this.baseUrl + "/" + busId);
+    return this.httpclient.delete<any>(this.baseUrl + "/" + String(busId)); 
   }
   addNewbus(bus: any): Observable<any> {
     console.log(bus);
@@ -24,10 +26,11 @@ export class BusDetailsService {
   }
   updatebus(busId: number, bus: any): Observable<any> {
     console.log(bus);
-    return this.httpclient.put<any>(this.baseUrl + "/" + busId, bus);
+    localStorage.setItem('UpdatedBus',JSON.stringify(bus))
+    return this.httpclient.put<any>(this.baseUrl + "/" + String(busId), bus);
   }
-  searchbusById(busId: number): Observable<any> {
-    return this.httpclient.get(this.baseUrl + "/" + busId);
+  searchbusById(busId: number): Observable<Buses> {
+    return this.httpclient.get<Buses>(this.baseUrl + "/" + String(busId));
   }
 
 }

@@ -1,0 +1,79 @@
+<head>
+    <meta charset="UTF-8">
+    <!---<title> Responsive Login Form | CodingLab </title>--->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Bus Layout</h5>
+          <button type="button" class="close" 
+          data-dismiss="modal" aria-label="Close"
+          (click)="CloseClick()">
+            <span >&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <app-seatselection *ngIf="ActivateseatselectionComponent">
+          </app-seatselection>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<body class="detailsform" >
+    <div class="container">
+        <form action="#" #detailform = "ngForm" >
+            <div class="title">Enter Your Details</div>
+            <div class="input-boxes">
+                <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="Email1" #Email1="ngModel" minlength="5" name="Email" placeholder="Enter Your Email" [(ngModel)]="unauthcustObject.Email"
+                        required>
+                    <div class="underline"></div>
+                </div>
+                <div class="form-control-feedback"
+              *ngIf="Email1.errors && (Email1.dirty || Email1.touched)">
+              <p *ngIf="Email1.errors.required" style="color: indigo;" >Email is required</p>
+              
+              <p *ngIf="Email1.errors.minlength" style="color: indigo;">Email must be atleast 5 characters long</p> 
+              </div>
+                <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="Name" #Name="ngModel" minlength="3" name="Name" placeholder="Enter Your Name" [(ngModel)]="unauthcustObject.Name"
+                        required>
+                    <div class="underline"></div>
+                </div>
+                <div class="form-control-feedback"
+              *ngIf="Name.errors && (Name.dirty || Name.touched)">
+              <p *ngIf="Name.errors.required" style="color: indigo;" >Name is required</p>
+
+              <p *ngIf="Name.errors.minlength" style="color: indigo;"> Name must be atleast 3 characters long</p> 
+              </div>
+                <div class="input-box">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" id="ContactNo1" #ContactNo1="ngModel" minlength="10" name="ContactNo" placeholder="Enter Your ContactNo"
+                        [(ngModel)]="unauthcustObject.ContactNo" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="form-control-feedback"
+              *ngIf="ContactNo1.errors && (ContactNo1.dirty || ContactNo1.touched)">
+              <p *ngIf="ContactNo1.errors.required" style="color: indigo;" >ContactNo is required</p>
+              <p *ngIf="ContactNo1.errors.minlength" style="color: indigo;">ContactNo must be 10 characters long</p> 
+              </div>
+                <div class="input-box button">
+                    <!--<input type="submit" name="" value="Continue" (click)="Continue()">-->
+                    <input type="submit"  name="" [disabled]="detailform.invalid"
+                data-toggle="modal" data-target="#exampleModal" 
+                (click)="Continue()" data-backdrop="static" data-keyboard="false" 
+                value="Continue">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>

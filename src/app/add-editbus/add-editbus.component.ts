@@ -83,7 +83,7 @@ export class AddEditbusComponent implements OnInit {
       //name: this.name
     };
     this.routeService.addNewbus(busObject).subscribe(res => {
-      alert(res.toString());
+      alert("Bus Added Successfully!!");
     });
   }
 

@@ -7,7 +7,7 @@ import { AuthAdminDetails } from '../_classes/auth-admin-details';
 })
 export class AdminauthService {
 
-  readonly baseUrl: string = "http://localhost:63671/api/AdminAuth";
+  readonly baseUrl: string = "http://localhost:10536/api/AdminAuth";
 
   constructor(private httpclient: HttpClient) { }
 

@@ -29,7 +29,7 @@ export class AdminloginComponent implements OnInit {
         if (this.Name != '') {
           console.log("Login successful");
           localStorage.setItem('isLoggedIn', "true");
-          this.router.navigate(['/admindashboard']);
+          this.router.navigate(['/buslist']);
         }
       });
 

@@ -68,7 +68,8 @@ export class BuslistComponent implements OnInit {
     this.GetBusList();
   }
 
-  DeleteClick(busId: number) {
+  DeleteClick(busId: number) { 
+    console.log(busId);
     if (window.confirm('Are you sure, you want to delete?')) {
       this.service.deletebus(busId).subscribe(data => { this.GetBusList() });
     }

@@ -7,23 +7,34 @@
 
 <body>
     <div class="container">
-        <form action="#">
+        <form action="#" #adminloginform="ngForm">
             <div class="title">Admin Login</div>
             <div class="input-boxes">
                 <div class="input-box">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" name="Email" placeholder="Enter Your Email" [(ngModel)]="AuthAdminObject.Email"
+                    <input type="text" id="Email" #Email="ngModel" minlength="5" name="Email" placeholder="Enter Your Email" [(ngModel)]="AuthAdminObject.Email"
                         required>
                     <div class="underline"></div>
                 </div>
+                <div class="form-control-feedback"
+              *ngIf="Email.errors && (Email.dirty || Email.touched)">
+              <p *ngIf="Email.errors.required" style="color: indigo;" >Email is required</p>
+              <p *ngIf="Email.errors.minlength" style="color: indigo;">Email must be atleast 5 characters long</p> 
+              </div>
                 <div class="input-box">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="Password" placeholder="Enter Your Password"
+                    <input type="password" id="Password2" #Password2="ngModel" minlength="6" name="Password" placeholder="Enter Your Password"
                         [(ngModel)]="AuthAdminObject.Password" required>
                     <div class="underline"></div>
+                    
                 </div>
+                <div class="form-control-feedback"
+              *ngIf="Password2.errors && (Password2.dirty || Password2.touched)">
+              <p *ngIf="Password2.errors.required" style="color: indigo;" >Password is required</p>
+              <p *ngIf="Password2.errors.minlength" style="color: indigo;">Password must be atleast 6 characters long</p> 
+              </div>
                 <div class="input-box button">
-                    <input type="submit" name="" value="Login" (click)="CheckAdmin()" href="#admindashboard">
+                    <input type="submit" name="Login" [disabled]="adminloginform.invalid" value="Login" (click)="CheckAdmin()" href="#admindashboard">
 
                 </div>
             </div>
